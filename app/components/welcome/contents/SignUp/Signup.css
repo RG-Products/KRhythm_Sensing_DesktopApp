@@ -1,0 +1,35 @@
+.login-wrapper {
+  height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 420px;
+  background-image:var(--bg-color);
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.logo-small {
+  width: 250px;
+  height: auto;
+  object-fit: contain;
+}
+
+.input-dark {
+  background-color: #343a40;
+  border: none;
+}
+
+.input-dark:focus {
+  background-color: #343a40;
+  color: white;
+  border: 1px solid #495057;
+  box-shadow: none;
+}
+
+::placeholder {
+  color: #ccc !important;
+  opacity: 1;
+}

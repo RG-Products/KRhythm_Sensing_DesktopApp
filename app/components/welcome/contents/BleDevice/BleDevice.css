@@ -1,0 +1,52 @@
+.ble-wrapper {
+  height: 100vh;
+  background-color: #f8f9fa;
+  
+}
+
+.ble-box {
+  width: 100%;
+  max-width: 480px;
+  background-image: var(--bg-color);
+  padding-left: 2rem;
+  padding-right: 2rem;
+  position: relative;
+}
+
+.logo-top {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.device-row {
+  background-color:transparent;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.device-row:hover {
+  /* background-color: #e0e0e0; */
+  background: linear-gradient(to bottom, #e0e0e0, #f5f5f5);
+  font-weight: bolder;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+.device-list{
+    margin: 10px 190px;
+    color: var(--primary-color);
+    font-weight: bolder;
+}
+.box-logo {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 100px;
+}
+
+/* Medium-sized Bluetooth logo */
+.big-logo {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  width: 150px;
+  height: auto;
+}

@@ -1,0 +1,17 @@
+.connect-wrapper {
+  height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.connect-box {
+  width: 100%;
+  max-width: 480px;
+  background-image: var(--bg-color);
+  /* background-color: #ffffff; */
+}
+
+.logo-small {
+  width: 250px;
+  height: auto;
+  object-fit: contain;
+}

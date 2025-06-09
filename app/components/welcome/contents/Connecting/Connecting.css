@@ -1,0 +1,48 @@
+.content-box {
+  width: 100%;
+  max-width: 450px;
+  min-height: 600px;
+  position: relative;
+  background-image: linear-gradient(#E2FDFF,#EFFEFF);
+  border-radius: 25px;
+}
+
+/* Small logo inside the box */
+.box-logo {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 150px;
+}
+
+/* Medium-sized Bluetooth logo */
+.big-logo {
+  margin-top: 55px;
+  width: 150px;
+  height: auto;
+}
+
+/* Pairing box style */
+.pairing-box {
+  background-color: #10ca9c;
+  color: white;
+  border-radius: 30px;
+}
+/* Increase size and change color of checkbox */
+.form-check-input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  border: 2px solid #0d6efd; /* Bootstrap primary */
+}
+
+/* Optional: when it's checked, fill it with primary color */
+.form-check-input:checked {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+/* Optional: smoother corners */
+.form-check-input {
+  border-radius: 4px;
+}

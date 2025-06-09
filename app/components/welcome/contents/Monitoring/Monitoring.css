@@ -1,0 +1,105 @@
+.insidegraph{
+    /* margin: 0;
+    padding: 0;
+    max-height: 100px;
+    height: 200px; */
+}
+.mainmonitoring{
+    background-color: #10B1A7;
+    max-height: 700px;
+    height: 700px;
+    margin: 0%;
+
+}
+.ml-20px {
+  margin-left: 10px;
+  margin-top: 50px;
+}
+.titlebar{
+    /* background-color: #B6F2F6; */
+    position: relative;
+    top: 30px;
+    max-height: 80px;
+    background: radial-gradient(circle, rgb(230, 250, 252), rgb(211, 250, 253), #c7f6fa, #B6F2F6);
+
+}
+.sidebar{
+    background-color: #B6F2F6;
+    margin-top: 18px;
+    margin-left: -4px;
+    border-radius: 10px;
+    background: radial-gradient(circle, rgb(230, 250, 252), rgb(211, 250, 253), #c7f6fa, #B6F2F6);
+}
+.titlelogo{
+    background-size: 10px;
+    width: 150px;
+    height: auto;
+    /* margin-top: -21px; */
+    position: relative;
+    top: -20px;
+    left: 30px;
+
+    /* margin-top: -100px; */
+    /* max-height: 300px; */
+}
+.maintitle{
+     background: radial-gradient(circle, rgb(230, 250, 252), rgb(211, 250, 253), #c7f6fa, #B6F2F6);
+  /* background: linear-gradient(to bottom, #B6F2F6, #c7f6fa,rgb(211, 250, 253),rgb(230, 250, 252)); */
+  margin-top: 18px;
+  margin-left: 40px;
+  border-radius: 10px;
+  max-height: 600px;
+  height: 520px;
+  margin-right: 10px;
+  flex: 1; /* Makes it shrink within row */
+  /* background: 'linear-gradient(to right, #B6F2F6,rgb(210, 244, 247), #ffffff)'; */
+}
+.Monitorbutton{
+    background-color: #10b1a7;
+    color: 'white';
+    border :'3px solid white';
+}
+.Monitorbutton2{
+    margin-left: 60px;
+}
+.dropbutton .btn{
+   background-color: #1E3E6D; 
+   color: white;
+   border: none;
+   margin-left: 30px;
+}
+.blClass{
+    margin-left: 30px;
+    font-size: large;
+    font-weight: bolder;
+    color:#1E3E6D ;
+}
+.download{
+    margin-left: 60px;
+    color: #1E3E6D;
+}
+.graphone{
+    max-height: 600px;
+    height: 500px;
+    min-height: 400px;
+    margin-top: -15px;
+    
+}
+.graphonetext{
+    background: radial-gradient(circle, rgb(230, 250, 252), rgb(211, 250, 253), #c7f6fa, #B6F2F6);
+
+}
+.graphonethree{
+    max-height: 200px;
+    height: 200px;
+    min-height: 200px;
+}
+.invisible-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.invisible-scrollbar::-webkit-scrollbar {
+  width: 0;
+  background: transparent; /* Chrome, Safari */
+}

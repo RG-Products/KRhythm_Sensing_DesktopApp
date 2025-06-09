@@ -1,0 +1,62 @@
+/* White box container */
+.content-box {
+  width: 100%;
+  max-width: 450px;
+  min-height: 500px;
+  position: relative;
+  background-image: linear-gradient(#E2FDFF,#EFFEFF);
+}
+
+/* Top-left logo */
+.box-logo {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 150px;
+}
+
+/* Medium logo (adjusted size) */
+.big-logo {
+  width: 120px;
+  height: auto;
+  margin-top: 300px;
+  /* border-radius: 50%; */
+}
+
+/* Device row base style */
+.device-row {
+  color: var(--primary-color);
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+}
+
+.device-row.hovered {
+  background: linear-gradient(to bottom, #e0e0e0, #f5f5f5);
+  font-weight: 500;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.spinner-logo {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px; 
+  animation: spin 1s linear infinite;
+  filter: grayscale(100%);
+  opacity: 0.7;
+}
+.bluetooth-icon-wrapper {
+  background-color: #007bff; 
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 16px;
+}
+

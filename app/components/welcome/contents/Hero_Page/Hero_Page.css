@@ -1,0 +1,27 @@
+.content-box1 {
+  width: 100%;
+  max-width: 500px;
+  max-height: 500px;
+  height: 100%;
+  border-radius: 20px;
+  background-image: linear-gradient(#E2FDFF,#EFFEFF);
+}
+
+.hero-logo1 {
+   height: 100px;
+  width: auto;
+  object-fit: contain;
+}
+
+.button{
+    margin-top: 60px;
+    /* background-color: #10b1a7; */
+}
+.text1
+{
+    font-weight: bolder;
+}
+.text2{
+    font-family: 'Helvetica', 'Arial', sans-serif;
+     font-weight: bolder;
+}
