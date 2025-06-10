@@ -9,6 +9,7 @@ import { FaUserCircle } from 'react-icons/fa';
 import { FaHeartPulse } from "react-icons/fa6";
 import HeartbeatBP from "./HBBloodPressure";
 import { useNavigate } from 'react-router-dom';
+import { RiLogoutCircleLine } from "react-icons/ri";
 
 const Monitoring = () => {
   const [graphOption, setGraphOption] = useState(1);
@@ -108,11 +109,12 @@ const handleStop = () => {
             <p className="mt-2 fw-semibold" style={{ color: '#1E3E6D' }}>Rajagopal</p>
           </div>
 
-          <div className="d-flex flex-column align-items-center gap-5">
+          <div className="d-flex flex-column align-items-center gap-4">
             <FaHome size={40} style={iconStyleWhite} onClick={() => navigate('/')} />
             <FaUserInjured size={40} style={iconStyleWhite} />
             <FaCog size={40} style={iconStyleWhite} />
             <FaQuestionCircle size={40} style={iconStyleWhite} />
+            <RiLogoutCircleLine size={40} style={iconStyleWhite} onClick={() => navigate('/')}/>
           </div>
         </div>
 
@@ -159,7 +161,7 @@ const handleStop = () => {
                     </div>
                   </div>
                   <div style={{ width: "20%" }} className="shadow rounded p-3 d-flex align-items-center gap-3 graphonetext">
-                    <FaHeart className="text-danger" size={70} />
+                    <FaHeart className="text-danger heartbeat-icon" size={70} />
                     <div>
                       <p className="mb-1" style={{ color: "#1E3E6D" }}>Heart Rate</p>
                       <h5 className="m-0" style={{ color: "#1E3E6D" }}>70 BPM</h5>
@@ -176,40 +178,36 @@ const handleStop = () => {
                     </div>
                   </div>
                   <div style={{ width: "20%" }} className="bg-white shadow rounded p-3 d-flex align-items-center gap-3 graphonetext">
-                    <FaHeartPulse className="text-danger" size={70} />
-                    <div>
-                      <p className="mb-1" style={{ color: "#1E3E6D" }}>BLOOD PRESSURE</p>
-                      <h5 className="m-0" style={{ color: "#1E3E6D" }}>120 / 80</h5>
-                    </div>
+                  <FaHeartPulse className="text-danger heartbeat-icon" size={70} />
+                  <div>
+                    <p className="mb-1 bp-label" style={{ color: "#1E3E6D" }}>BLOOD PRESSURE</p>
+                    <h5 className="m-0 bp-value" style={{ color: "#1E3E6D" }}>120 / 80</h5>
                   </div>
+                </div>
                 </div>
               )}
 
               {graphOption === 3 && (
-  <div className="d-flex flex-column gap-3">
-    {[1, 2].map((_, index) => (
-      <div key={index} className="d-flex flex-row graphonethree" style={{ flex: 1 }}>
-        <div
-            className="flex-grow-1 rounded p-3 me-3 d-flex align-items-center justify-content-center invisible-scrollbar"
-            style={{ height: "200px", overflowY: "auto" }}
-            >
-          <div className="w-100 h-100">
-            {index === 0 ? (
-                <Heartbeat />
-            ) : (
-                <HeartbeatBP />
-            )}
-            </div>
-        </div>
-
-        <div
+              <div className="d-flex flex-column gap-3">
+                {[1, 2].map((_, index) => (
+                  <div key={index} className="d-flex flex-row graphonethree" style={{ flex: 1 }}>
+                  <div className="w-100 h-100 d-flex align-items-center justify-content-center">
+                    <div style={{ transform: 'scale(0.5)', minWidth:"700px",transformOrigin: 'center' }}>
+                      {index === 0 ? (
+                        <Heartbeat />
+                      ) : (
+                        <HeartbeatBP />
+                      )}
+                    </div>
+                  </div>
+            <div
           style={{ width: "20%", minWidth: "180px" }}
           className="bg-white shadow rounded p-3 d-flex align-items-center gap-3 graphonetext"
-        >
+         >
           {index === 0 ? (
-            <FaHeart className="text-danger" size={60} />
+            <FaHeart className="text-danger heartbeat-icon" size={60} />
           ) : (
-            <FaHeartPulse className="text-danger" size={60} />
+            <FaHeartPulse className="text-danger heartbeat-icon" size={60} />
           )}
           <div>
             <p className="mb-1" style={{ color: "#1E3E6D" }}>

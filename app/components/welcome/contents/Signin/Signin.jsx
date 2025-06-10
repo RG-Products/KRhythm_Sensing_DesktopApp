@@ -136,7 +136,13 @@ function Signin() {
               onClick={() => navigate('/signup')}
               style={{ color: 'var(--primary-color)', cursor: 'pointer', textDecoration: 'underline' }}
             >
-              Sign up
+              Sign up {' '}/
+            </span>
+            <span
+              onClick={() => navigate('/scan')}
+              style={{ color: 'var(--primary-color)', cursor: 'pointer', textDecoration: 'underline' }}
+            >
+              {' '}Login as Guest
             </span>
           </p>
         </div>

@@ -56,11 +56,11 @@ function registerResourcesProtocol() {
       const url = new URL(request.url)
       // Combine hostname and pathname to get the full path
       const fullPath = join(url.hostname, url.pathname.slice(1))
-      console.log("AAA")
-      console.log(fullPath)
+      // console.log("AAA")
+      // console.log(fullPath)
       const filePath = join(__dirname, '../../resources', fullPath)
-      console.log(fullPath)
-      console.log("BBB")
+      // console.log(fullPath)
+      // console.log("BBB")
       return net.fetch(pathToFileURL(filePath).toString())
     } catch (error) {
       console.error('Protocol error:', error)

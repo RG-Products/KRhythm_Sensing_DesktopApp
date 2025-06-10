@@ -5,19 +5,29 @@ import logo from '../Assets/logo.png';
 import centrelogo from '../Assets/bluetooth.png';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../BackButtonUI/BackButton';
+import { MdOutlineBluetoothSearching } from "react-icons/md";
+import { MdOutlineBluetooth } from "react-icons/md";
 function BleDevicePage() {
-    
   const [devices, setDevices] = useState([
-    'BLE Device 1',
-    'BLE Device 2',
-    'BLE Device 3'
+    'BLE Device x',
+    'BLE Device y',
+    'BLE Device z',
   ]);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const navigate = useNavigate();
+
   const handlePairNewDevice = () => {
-    
-    alert('Pairing process triggered...');
-    navigate('/available')
-    // Here you can trigger BLE scan using Bleak or Web Bluetooth API
+    setShowSuccessModal(true); // Show confirmation modal
+  };
+
+  const redirecttohome = () => {
+    navigate('/monitoring');
+  };
+
+  const proceedToAvailable = () => {
+    setShowSuccessModal(false);
+    navigate('/available');
+ 
   };
 
   return (
@@ -28,13 +38,14 @@ function BleDevicePage() {
           <img src={logo} alt="Logo" className="box-logo" />
         </div>
 
-        <div className="mb-3">
-             <img src={centrelogo} alt="Logo" className="big-logo" />
+        <div className="mb-3 biglogo">
+          <MdOutlineBluetoothSearching size={30} className='biglogo' />
+          {/* <img src={centrelogo} alt="Bluetooth Logo" className="big-logo" /> */}
         </div>
 
         <button
-          className="btn  w-50 mb-3"
-          style={{backgroundColor: 'var(--primary-color)' , fontWeight:'700', color : 'white' }}
+          className="btn w-50 mb-3"
+          style={{ backgroundColor: 'var(--primary-color)', fontWeight: '700', color: 'white' }}
           onClick={handlePairNewDevice}
         >
           Pair New Device
@@ -42,18 +53,65 @@ function BleDevicePage() {
 
         <p className="text-muted small mb-2">Previously connected devices</p>
 
-        <div className="device-list text-center mx-auto mb-2" style={{ width: '50%' }} >
-        {devices.map((device, index) => (
+        <div className="device-list text-center mx-auto mb-2" style={{ width: '50%' }}>
+          {devices.map((device, index) => (
             <div
-            key={index}
-            className="d-flex align-items-center justify-content-between device-row p-2 mb-2 rounded"
+              key={index}
+              className="d-flex align-items-center justify-content-between device-row p-2 mb-2 rounded"
+              onClick={redirecttohome}
             >
-            <span className="flex-grow-1 text-center">{device}</span>
-            <span className="text-muted"> </span>
+              <span className="flex-grow-1 text-center">{device}</span>
             </div>
-        ))}
+          ))}
         </div>
       </div>
+
+      {/* Confirmation Modal */}
+      {showSuccessModal && (
+        <div
+          className="modal fade show"
+          style={{ display: 'block', backgroundColor: 'rgba(0,0,0,0.5)' }}
+          tabIndex="-1"
+          role="dialog"
+        >
+          <div className="modal-dialog modal-dialog-centered" role="document">
+            <div className="modal-content">
+
+              <div className="modal-header bg-success text-white">
+                <h5 className="modal-title">Pairing Confirmation</h5>
+                <button
+                  type="button"
+                  className="btn-close btn-close-white"
+                  aria-label="Close"
+                  onClick={() => setShowSuccessModal(false)}
+                ></button>
+              </div>
+
+              <div className="modal-body">
+                <p>Would you like to begin the pairing process?</p>
+              </div>
+
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary"
+                  onClick={() => setShowSuccessModal(false)}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={proceedToAvailable}
+                >
+                  Yes, Proceed
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

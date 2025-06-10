@@ -43,9 +43,53 @@
 }
 
 /* Medium-sized Bluetooth logo */
-.big-logo {
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.6) translateY(-30px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.1) translateY(10px);
+  }
+  80% {
+    transform: scale(0.98) translateY(-5px);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes floatSmooth {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.biglogo {
   margin-top: 40px;
   margin-bottom: 20px;
   width: 150px;
   height: auto;
+  animation: bounceIn 1.4s ease-out, floatSmooth 6s ease-in-out infinite;
+
+  transition: transform 0.3s ease, box-shadow 0.4s ease;
+  animation: blink-blue-green 1s infinite;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+@keyframes blink-blue-green {
+  0%   { color: var(--primary-color); } /* blue */
+  50%  { color:  var(--secondary-color);} /* green */
+  100% { color:var(--primary-color);  }
+}
+
+

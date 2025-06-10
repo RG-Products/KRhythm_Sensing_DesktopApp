@@ -7,30 +7,40 @@ import BackButton from '../BackButtonUI/BackButton';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 function Signup() {
-  const nameRef = useRef();
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
-  const confirmRef = useRef();
+  const confirmPasswordRef = useRef();
+
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    nameRef.current?.focus();
+    firstNameRef.current?.focus();
   }, []);
 
-  const toggleConfirmPassword = () => {
-    setShowConfirmPassword(prev => !prev);
-  };
+  const togglePassword = () => setShowPassword(prev => !prev);
+  const toggleConfirmPassword = () => setShowConfirmPassword(prev => !prev);
 
   const handleSignUp = () => {
-    const name = nameRef.current.value;
-    const email = emailRef.current.value;
+    const firstName = firstNameRef.current.value.trim();
+    const lastName = lastNameRef.current.value.trim();
+    const email = emailRef.current.value.trim();
     const password = passwordRef.current.value;
-    const confirm = confirmRef.current.value;
+    const confirm = confirmPasswordRef.current.value;
 
-    if (!name || !email || !password || !confirm) {
+    if (!firstName || !lastName || !email || !password || !confirm) {
       setError('Please fill all fields');
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError('Enter a valid email');
       return;
     }
 
@@ -40,18 +50,14 @@ function Signup() {
     }
 
     // Store to localStorage
-    localStorage.setItem('name', name);
+    localStorage.setItem('name', `${firstName} ${lastName}`);
     localStorage.setItem('email', email);
     localStorage.setItem('password', password);
 
     setError('');
-    alert('Account created successfully!');
+    // alert('Account created successfully!');
+    
     navigate('/signin');
-  };
-
-  const handleGuestLogin = () => {
-    localStorage.setItem('guest', 'true');
-    navigate('/scan');
   };
 
   return (
@@ -63,18 +69,29 @@ function Signup() {
         </div>
         <h2 className="text-center mb-4" style={{ color: 'var(--primary-color)', fontWeight: '700' }}>Sign Up</h2>
 
-        <div className="mb-4">
+        <div className="mb-3">
           <input
             autoComplete="off"
             type="text"
-            ref={nameRef}
+            ref={firstNameRef}
             className="form-control text-white w-75 mx-auto"
             style={{ backgroundColor: '#3b4044', borderRadius: '8px' }}
-            placeholder="Enter your name"
+            placeholder="Enter your first name"
           />
         </div>
 
-        <div className="mb-4">
+        <div className="mb-3">
+          <input
+            autoComplete="off"
+            type="text"
+            ref={lastNameRef}
+            className="form-control text-white w-75 mx-auto"
+            style={{ backgroundColor: '#3b4044', borderRadius: '8px' }}
+            placeholder="Enter your last name"
+          />
+        </div>
+
+        <div className="mb-3">
           <input
             type="email"
             ref={emailRef}
@@ -89,12 +106,12 @@ function Signup() {
           />
         </div>
 
-        <div className="mb-4">
+        <div className="mb-3 position-relative w-75 mx-auto">
           <input
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             ref={passwordRef}
             autoComplete="off"
-            className="form-control text-white w-75 mx-auto"
+            className="form-control text-white pe-5"
             style={{
               backgroundColor: '#3b4044',
               borderRadius: '8px',
@@ -102,12 +119,25 @@ function Signup() {
             }}
             placeholder="Enter your password"
           />
+          <span
+            onClick={togglePassword}
+            style={{
+              position: 'absolute',
+              right: '15px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              cursor: 'pointer',
+              color: '#ffffffb3'
+            }}
+          >
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
+          </span>
         </div>
 
-        <div className="mb-4 input-small mx-auto position-relative w-75">
+        <div className="mb-3 position-relative w-75 mx-auto">
           <input
             type={showConfirmPassword ? 'text' : 'password'}
-            ref={confirmRef}
+            ref={confirmPasswordRef}
             autoComplete="off"
             className="form-control text-white pe-5"
             style={{
@@ -137,7 +167,8 @@ function Signup() {
         )}
 
         <div className="d-grid mb-3">
-          <button className="btn text-light btn-block w-75 mx-auto"
+          <button
+            className="btn text-light btn-block w-75 mx-auto"
             style={{ backgroundColor: 'var(--secondary-color)' }}
             onClick={handleSignUp}
           >
@@ -145,19 +176,23 @@ function Signup() {
           </button>
         </div>
 
-        {/* Guest Login Button */}
-        <div className="text-center mb-3">
-          <button className="btn btn-outline-light w-75"
-            style={{ fontWeight: '500', color:" #1E3E6D"}}
+        {/* Optional Guest Login Feature */}
+        {/* <div className="text-center mb-3">
+          <button
+            className="btn btn-outline-light w-75"
+            style={{ fontWeight: '500', color: '#1E3E6D' }}
             onClick={handleGuestLogin}
           >
             Continue as Guest
           </button>
-        </div>
+        </div> */}
 
         <div className="text-center mt-2">
           <p className="small text-dark">
-            Already have an account? <Link to="/signin" className="text-decoration-none" style={{ color: 'var(--primary-color)' }}>Log in</Link>
+            Already have an account?{' '}
+            <Link to="/signin" className="text-decoration-none" style={{ color: 'var(--primary-color)' }}>
+              Log in
+            </Link>
           </p>
         </div>
       </div>

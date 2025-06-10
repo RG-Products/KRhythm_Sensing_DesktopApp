@@ -3,40 +3,43 @@ import './Connecting.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../Assets/logo.png';
 import centrelogo from '../Assets/bluetooth.png';
-import { color } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../BackButtonUI/BackButton';
 
 function PairingPage() {
   const [allowAccess, setAllowAccess] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const navigate = useNavigate();
-  const UserProfile = () => { 
-    alert("Successfully Paired")
-    navigate('/Monitoring')
-  }
+
+  const handlePair = () => {
+    setShowSuccessModal(true); // Trigger modal
+  };
+
+  const proceedToMonitoring = () => {
+    setShowSuccessModal(false);
+    navigate('/Monitoring');
+  };
+
   return (
-    <div className="container-fluid d-flex justify-content-center align-items-center vh-100 bg-light ">
-       <BackButton to={-1} label="Back" />
+    <div className="container-fluid d-flex justify-content-center align-items-center vh-100 bg-light">
+      <BackButton to={-1} label="Back" />
+
       <div className="content-box p-4 bg-white shadow rounded text-start position-relative">
-        
-        {/* Top-left logo inside box */}
-        
         <img src={logo} alt="Logo" className="box-logo" />
-        {/* Centered medium logo */}
+
         <div className="d-flex justify-content-center mt-5 mb-4">
           <img src={centrelogo} alt="Bluetooth" className="big-logo" />
         </div>
 
-        {/* Device Name and Available Devices */}
         <div className="mb-2 mt-3">
           <strong style={{ color: '#1c4070' }}>Device Name</strong>
           <span className="ms-5 text-muted">Rajagopal</span>
         </div>
+
         <div className="mb-3 mt-3">
-          <strong style={{color :'#1c4070'}}>Available Devices</strong>
+          <strong style={{ color: '#1c4070' }}>Available Devices</strong>
         </div>
 
-        {/* Pairing Dialog */}
         <div className="pairing-box p-3 rounded mt-4">
           <div className="fw-bold mb-2">Pair with BLE Device 1?</div>
           <div className="mb-3">
@@ -44,27 +47,80 @@ function PairingPage() {
             <div className="fw-bold fs-5">123456</div>
           </div>
 
-          {/* Checkbox */}
-            <div className="form-check mb-3">
+          <div className="form-check mb-3">
             <input
-                className="form-check-input"
-                type="checkbox"
-                id="allowAccess"
-                checked={allowAccess}
-                onChange={() => setAllowAccess(!allowAccess)}
+              className="form-check-input"
+              type="checkbox"
+              id="allowAccess"
+              checked={allowAccess}
+              onChange={() => setAllowAccess(!allowAccess)}
             />
             <label className="form-check-label small ms-2" htmlFor="allowAccess">
-                Allow access to your contacts and call history
+              Allow access to your contacts and call history
             </label>
-            </div>
+          </div>
 
-          {/* Buttons */}
           <div className="d-flex justify-content-end gap-3">
-            <button className="btn " style={{color : 'var(--primary-color)', fontWeight: '900'}} onClick={() => navigate('/')}>Cancel</button>
-            <button className="btn " style={{color : 'var(--primary-color)', fontWeight: '900'}} onClick={() => UserProfile()}>Pair</button>
+            <button
+              className="btn"
+              style={{ color: 'var(--primary-color)', fontWeight: '900' }}
+              onClick={() => navigate('/')}
+            >
+              Cancel
+            </button>
+            <button
+              className="btn"
+              style={{ color: 'var(--primary-color)', fontWeight: '900' }}
+              onClick={handlePair}
+            >
+              Pair
+            </button>
           </div>
         </div>
       </div>
+
+      {/* Modal */}
+      {showSuccessModal && (
+        <div
+          className="modal fade show"
+          style={{ display: 'block', backgroundColor: 'rgba(0,0,0,0.5)' }}
+          tabIndex="-1"
+          role="dialog"
+        >
+          <div className="modal-dialog modal-dialog-centered" role="document">
+            <div className="modal-content">
+              <div className="modal-header bg-success text-white">
+                <h5 className="modal-title">Successfully Paired</h5>
+                <button
+                  type="button"
+                  className="btn-close btn-close-white"
+                  aria-label="Close"
+                  onClick={() => setShowSuccessModal(false)}
+                ></button>
+              </div>
+              <div className="modal-body">
+                <p>Would you like to proceed to the monitoring screen?</p>
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary"
+                  onClick={() => setShowSuccessModal(false)}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={proceedToMonitoring}
+                >
+                  Yes, Proceed
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
