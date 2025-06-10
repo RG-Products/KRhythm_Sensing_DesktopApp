@@ -7,8 +7,8 @@ import centrelogo from '../Assets/bluetooth.png';
 import spinning from '../Assets/spining.png';
 import bluetoothicon from '../Assets/Blicon.png'
 import { useNavigate } from 'react-router-dom';
-import BackButton from '../BackButtonUI/BackButton';
 import { MdOutlineBluetoothSearching } from "react-icons/md";
+import BackButton from '../BackButtonUI/BackButton';
 function Available() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
@@ -26,7 +26,7 @@ function Available() {
         <img src={logo} alt="Small Logo" className="box-logo" />
 
         {/* Medium logo in center */}
-        <img src={centrelogo} alt="Medium Logo" className="big-logo mb-4 mt-5" style={{ width: '120px' , paddingTop:'50px'}} />
+        <MdOutlineBluetoothSearching  className="biglogo mb-4 mt-5" style={{ width: '120px' , paddingTop:'50px'}} />
 
         {/* Device Name Section */}
          <div className="mb-2 mt-3  text-start">

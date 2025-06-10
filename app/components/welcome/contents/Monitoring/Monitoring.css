@@ -105,7 +105,7 @@
 }
 @keyframes blink-blue-green {
   0%   { color: #0ee720; } /* blue */
-  50%  { color:  #f11f10;} /* green */
+  50%  { color:  #f52d1f;} /* green */
   100% { color:#0ee720;  }
 }
 

@@ -5,7 +5,8 @@ import logo from '../Assets/logo.png';
 import centrelogo from '../Assets/bluetooth.png';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../BackButtonUI/BackButton';
-
+import { MdOutlineBluetoothSearching } from "react-icons/md";
+import { MdOutlineBluetooth } from "react-icons/md";
 function BleDevicePage() {
   const [devices, setDevices] = useState([
     'BLE Device x',
@@ -26,6 +27,7 @@ function BleDevicePage() {
   const proceedToAvailable = () => {
     setShowSuccessModal(false);
     navigate('/available');
+ 
   };
 
   return (
@@ -36,9 +38,10 @@ function BleDevicePage() {
           <img src={logo} alt="Logo" className="box-logo" />
         </div>
 
-        <div className="mb-3">
-        <img src={centrelogo} alt="Bluetooth Logo" className="big-logo" />
-      </div>
+        <div className="mb-3 biglogo">
+          <MdOutlineBluetoothSearching size={30} className='biglogo' />
+          {/* <img src={centrelogo} alt="Bluetooth Logo" className="big-logo" /> */}
+        </div>
 
         <button
           className="btn w-50 mb-3"
