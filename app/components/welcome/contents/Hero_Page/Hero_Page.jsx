@@ -18,10 +18,10 @@ const Hero_Page = () => {
         <img src={logo} alt="Logo" className="hero-logo1 mb-3 mt-4" />
 
         {/* Tagline */}
-        <p className="text-secondary small mb-1 mt-4 text1">Your Pulse, Our Intelligence!!!</p>
+        <p className="small mb-1 mt-4 text1">Your Pulse, Our Intelligence!!!</p>
 
         {/* Heading */}
-        <h5 className="text-primary fw-bold mb-4 mt-5 text2">AI-Enhanced Blood Pressure Insights.</h5>
+        <h5 className=" fw-bold mb-4 mt-5 text2">AI-Enhanced Blood Pressure Insights.</h5>
 
         {/* Buttons Row */}
         <div className="row px-4 mt-4">

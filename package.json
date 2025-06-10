@@ -1,11 +1,11 @@
 {
-  "name": "KRhythm Sensing Technology",
-  "version": "1.0.2",
+  "name": "krhythm-sensing-technology",
+  "version": "2.0.0",
   "description": "The KRhythm Sensing Technology  (Health Monitoring App )is a modern desktop application built with Electron, React, and Vite, designed to display real-time or recorded health-related data such as ECG signals, heart rate, blood oxygen levels, and more.",
   "main": "./out/main/main.js",
   "license": "MIT",
   "author": {
-    "name": "Guasam",
+    "name": "RajaGopal",
     "url": "https://github.com/RAJAGOPAL5"
   },
   "scripts": {
@@ -37,17 +37,11 @@
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.2",
     "@electron-toolkit/utils": "^4.0.0",
-    "@radix-ui/react-slot": "^1.2.3",
-    "@radix-ui/react-switch": "^1.2.5",
     "bootstrap": "^5.3.6",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "lucide-react": "^0.511.0",
     "react-bootstrap": "^2.10.10",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.6.2",
     "recharts": "^2.15.3"
-    
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config-prettier": "^3.0.0",
@@ -73,4 +67,3 @@
     "vite": "^6.3.5"
   }
 }
-

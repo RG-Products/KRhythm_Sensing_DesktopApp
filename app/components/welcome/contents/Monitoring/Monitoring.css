@@ -103,3 +103,16 @@
   width: 0;
   background: transparent; /* Chrome, Safari */
 }
+@keyframes blink-blue-green {
+  0%   { color: #10b1a7; } /* blue */
+  50%  { color:  #1E3E6D;} /* green */
+  100% { color:#10b1a7;  }
+}
+
+.blinking-bluetooth {
+  animation: blink-blue-green 1s infinite;
+}
+.custom-dropdown-item {
+  padding: 12px 20px; /* Adjust as needed */
+  font-size: 1rem;
+}

@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
 import './ForgetPassword.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from '../Assets/logo.png'; // Make sure your logo path is correct
+import logo from '../Assets/logo.png'; 
 import { useNavigate } from 'react-router-dom';
-
+import BackButton from '../BackButtonUI/BackButton';
 function ForgotPassword() {
   const emailRef = useRef();
   const navigate = useNavigate();
@@ -16,11 +16,12 @@ function ForgotPassword() {
 
   return (
     <div className="forgot-wrapper d-flex align-items-center justify-content-center">
+      <BackButton to={-1} label="Back" />
       <div className="forgot-box text-center p-4 shadow rounded-4">
         <img src={logo} alt="Logo" className="logo mb-5" />
 
         <h4 className="fw-bold  mb-4"style={{ color: 'var(--primary-color)' }}>Forgot Password</h4>
-        <p className="text-muted mb-5" style={ {fontWeight:'500'}}>Enter your email to reset your password.</p>
+        <p className="mb-5" style={ {fontWeight:'500',color: 'var(--secondary-color)'}}>Enter your email to reset your password.</p>
 
         <input
           type="email"
@@ -40,7 +41,7 @@ function ForgotPassword() {
         <p className="text-muted small mb-4" style={ {fontWeight:'500'}}>
           ( You’ll get the reset mail ! )
         </p>
-        <div className="text-muted fw-semibold" style={ {fontWeight:'700'}} onClick={backtologin}>Back to login</div>
+        <div className="fw-semibold" style={ {fontWeight:'700',color: 'var(--primary-color)' }} onClick={backtologin}>Back to login</div>
       </div>
     </div>
   );

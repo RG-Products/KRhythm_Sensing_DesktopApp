@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import './BleDevice.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 import logo from '../Assets/logo.png';
 import centrelogo from '../Assets/bluetooth.png';
-// import { Bluetooth } from 'lucide-react'; // Or use Font Awesome / image
 import { useNavigate } from 'react-router-dom';
+import BackButton from '../BackButtonUI/BackButton';
 function BleDevicePage() {
     
   const [devices, setDevices] = useState([
@@ -22,6 +22,7 @@ function BleDevicePage() {
 
   return (
     <div className="ble-wrapper d-flex align-items-center justify-content-center">
+      <BackButton to={-1} label="Back" />
       <div className="ble-box p-4 shadow rounded-4 text-center">
         <div className="d-flex justify-content-start mb-3">
           <img src={logo} alt="Logo" className="box-logo" />

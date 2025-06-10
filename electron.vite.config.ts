@@ -2,7 +2,7 @@
 
 import { resolve } from 'path'
 import react from '@vitejs/plugin-react'
-// import tailwindcss from '@tailwindcss/vite'
+
 import { defineConfig, externalizeDepsPlugin } from 'electron-vite'
 
 export default defineConfig({

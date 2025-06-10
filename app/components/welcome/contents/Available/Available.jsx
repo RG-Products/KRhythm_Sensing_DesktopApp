@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import './Available.css'; 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { FaBluetoothB } from 'react-icons/fa';
 import logo from '../Assets/logo.png';
 import centrelogo from '../Assets/bluetooth.png';
 import spinning from '../Assets/spining.png';
 import bluetoothicon from '../Assets/Blicon.png'
 import { useNavigate } from 'react-router-dom';
-
+import BackButton from '../BackButtonUI/BackButton';
 function Available() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
@@ -19,6 +17,7 @@ function Available() {
 
   return (
     <div className="container-fluid d-flex justify-content-center align-items-center vh-100 bg-light">
+      <BackButton to={-1} label="Back" />
       <div className="content-box position-relative p-4 bg-white shadow rounded text-center mt-0">
         {/* Small logo in top-left of box */}
         <img src={logo} alt="Small Logo" className="box-logo" />

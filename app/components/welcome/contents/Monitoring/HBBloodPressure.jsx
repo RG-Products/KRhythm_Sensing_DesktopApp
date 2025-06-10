@@ -35,7 +35,7 @@ const HBBloodPressure = () => {
         style={{ background: 'radial-gradient(circle, rgb(230, 250, 252), rgb(211, 250, 253), #c7f6fa, #B6F2F6)' }}
       >
         <h5 className="text-center mb-3" style={{ color: '#1E3E6D', fontWeight: 'bolder', fontSize: '28px' }}>
-          Blood Pressure Monitor
+          Blood Pressure
         </h5>
 
         <ResponsiveContainer width="100%" height={327}>

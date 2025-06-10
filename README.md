@@ -118,3 +118,32 @@ Distribution files will be located in the `dist` directory.
 
 <br />
 
+├── app/                        # Renderer process files ==> Inside the app for backend
+│   ├── assets/                 # Static assets (images, fonts, etc)
+│   ├── components/             # React components
+│   │   ├── welcome/ .jsx           # Welcome kit components for window
+│       └── window/  .tsx       # This for title bar
+│   ├── styles/                 # CSS and Tailwind files
+│   │   ├── app.css             # App stylesheet
+│   │   └── window.css          # css stylesheet
+│   ├── index.html              # Entry HTML file (main entry)
+│   └── renderer.tsx            # Renderer process entry (main entry call renderer)
+├── lib/                        # Shared library code ==> Inside the lib for backend
+│   ├── main/                   # Main process code
+│   │   ├── index.ts            # Main entry point for Electron
+│   │   └── ...                 # Other main process modules
+│   ├── preload/                # Preload scripts for IPC
+│   │   ├── index.ts            # Preload script entry
+│   │   └── api.ts              # Exposed API for renderer
+│   ├── window/                 # Custom window implementation
+├── resources/                  # Build resources
+├── .eslintrc                   # ESLint configuration
+├── .prettierrc                 # Prettier format configuration
+├── electron-builder.yml        # Electron builder configuration (convert the app into exe)
+├── electron.vite.config.ts     # Vite configuration for Electron (Bundle react + vite + electron fastly smoothyly)
+├── package.json                # Project dependencies and scripts
+└── tsconfig.node.json          # Main process tsconfig
+└── tsconfig.web.json           # Renderer process tsconfig
+
+<br />
+

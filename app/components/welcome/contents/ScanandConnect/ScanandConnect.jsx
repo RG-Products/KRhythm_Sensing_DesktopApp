@@ -1,8 +1,8 @@
 import React from 'react';
 import './ScanandConnect.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../Assets/logo.png';
 import { useNavigate } from 'react-router-dom';
+import BackButton from '../BackButtonUI/BackButton';
 function ScanandConnect() {
   const navigate = useNavigate();
   const handleScan = () => {
@@ -17,7 +17,8 @@ function ScanandConnect() {
   };
 
   return (
-    <div className="connect-wrapper d-flex align-items-center justify-content-center">
+     <div className="connect-wrapper d-flex align-items-center justify-content-center position-relative">
+    <BackButton to={-1} label="Back" /> 
       <div className="connect-box p-4 shadow rounded-4 text-center">
         <div className="mb-3">
           <img src={logo} alt="Logo" className="logo-small" />

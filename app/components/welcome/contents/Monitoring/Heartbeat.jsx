@@ -45,7 +45,7 @@ const Heartbeat = ({ reset }) => {
         color: '#333'
       }}>
         <h5 className="text-center mb-3" style={{ color: '#1E3E6D', fontWeight: 'bolder', fontSize: '30px' }}>
-          Heart Rate ECG Monitor
+          Heart Rate
         </h5>
 
         <ResponsiveContainer width="100%" height={327}>

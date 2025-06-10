@@ -15,7 +15,7 @@ files:
 asarUnpack:
   - resources/**
 win:
-  executableName: ElectronReactApp
+  executableName: krhythm-sensing-technology
 nsis:
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}

@@ -4,7 +4,7 @@ All notable changes to the  (KRhythm Sensing Technology) are listed here.
 
 <br>
 
-### v11.0.1
+### v1.0.1
 
  ==> KRhythm Sensing Technology 
 
@@ -33,7 +33,7 @@ Used packages:
 <br>
 
 
-### v11.0.2
+### v1.0.2
 
  ==> KRhythm Sensing Technology 
 
@@ -44,15 +44,6 @@ Used packages:
 
  Updated Pages : 
     Monitoring ECG
-| Package            | Version    |     |
-| ------------------ | ---------- | --- |
-| electron           | `23.2.0`   | ⬆️  |
-| eslint             | `8.36.0`   | ⬆️  |
-| bootstrap          | `5.3.6`    | ⬆️  |
-| react-bootstrap    | `2.10.10`  | ⬆️  |
-| react-icons        | `5.5.0`    | ⬆️  |
-| react-router-dom   | `7.6.2`    | ⬆️  |
-| recharts           | `2.15.3`   | ⬆️  |
 
 Dependencies:
 + @electron-toolkit/preload 3.0.2
@@ -92,6 +83,28 @@ devDependencies:
 + typescript-eslint 8.33.1
 + vite 6.3.5
 
-
 <br>
+
+### v2.0.0
+
+    ==> KRhythm Sensing Technology 
+
+        download the reports 
+        Blinking Bluetooth
+        change input tag color
+        add back button UI
+
+Dependencies:
++ @electron-toolkit/preload 3.0.2
++ @electron-toolkit/utils 4.0.0
++ @radix-ui/react-slot 1.2.3
++ @radix-ui/react-switch 1.2.5
++ bootstrap 5.3.6
++ class-variance-authority 0.7.1
++ clsx 2.1.1
++ lucide-react 0.511.0 (0.513.0 is available)
++ react-bootstrap 2.10.10
++ react-icons 5.5.0
++ react-router-dom 7.6.2
++ recharts 2.15.3
 

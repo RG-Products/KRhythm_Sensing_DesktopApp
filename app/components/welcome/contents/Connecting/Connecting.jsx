@@ -5,6 +5,7 @@ import logo from '../Assets/logo.png';
 import centrelogo from '../Assets/bluetooth.png';
 import { color } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import BackButton from '../BackButtonUI/BackButton';
 
 function PairingPage() {
   const [allowAccess, setAllowAccess] = useState(false);
@@ -14,7 +15,8 @@ function PairingPage() {
     navigate('/Monitoring')
   }
   return (
-    <div className="container-fluid d-flex justify-content-center align-items-center vh-100 bg-light">
+    <div className="container-fluid d-flex justify-content-center align-items-center vh-100 bg-light ">
+       <BackButton to={-1} label="Back" />
       <div className="content-box p-4 bg-white shadow rounded text-start position-relative">
         
         {/* Top-left logo inside box */}

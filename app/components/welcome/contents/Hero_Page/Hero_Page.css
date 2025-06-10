@@ -20,8 +20,11 @@
 .text1
 {
     font-weight: bolder;
+    color:  #10b1a7;
+    font-size: medium;
 }
 .text2{
     font-family: 'Helvetica', 'Arial', sans-serif;
      font-weight: bolder;
+     color:  #1E3E6D;
 }

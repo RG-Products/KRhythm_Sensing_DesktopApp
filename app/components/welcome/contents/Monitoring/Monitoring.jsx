@@ -9,31 +9,81 @@ import { FaUserCircle } from 'react-icons/fa';
 import { FaHeartPulse } from "react-icons/fa6";
 import HeartbeatBP from "./HBBloodPressure";
 import { useNavigate } from 'react-router-dom';
+
 const Monitoring = () => {
   const [graphOption, setGraphOption] = useState(1);
   const [showGraph, setShowGraph] = useState(false);
-  const navigate = useNavigate();
-//   const handleStart = () => setShowGraph(true);
-//   const handleStop = () => setShowGraph(false);
   const [resetSignal, setResetSignal] = useState(false);
-  
-    const handleStart = () => {
-    setShowGraph(true);
-    setResetSignal(false); // clear reset
-    };
+  const [isMonitoring, setIsMonitoring] = useState(false);
 
-    const handleStop = () => {
+  const navigate = useNavigate();
+
+  const handleStart = () => {
+  setShowGraph(true);
+  setResetSignal(false);
+  setIsMonitoring(true);  // Start blinking
+};
+
+const handleStop = () => {
+  setShowGraph(false);
+  setIsMonitoring(false); // Stop blinking
+};
+  const handleReset = () => {
     setShowGraph(false);
-    };
-
-    const handleReset = () => {
-    setShowGraph(false);     // Hide the graph
-    setResetSignal(true);    // Trigger reset flag
+    setResetSignal(true);
     setTimeout(() => {
-        setShowGraph(true);    // Optionally re-show graph after reset
-        setResetSignal(false); // Clear flag
-    }, 100); // small delay to ensure component resets
-    };
+      setShowGraph(true);
+      setResetSignal(false);
+    }, 100);
+  };
+
+  // Sample data (replace this with actual data from your chart if possible)
+  const heartRateData = [
+    { time: '10:00', value: 72 },
+    { time: '10:01', value: 74 },
+    { time: '10:02', value: 70 }
+  ];
+
+  const bpData = [
+    { time: '10:00', systolic: 120, diastolic: 80 },
+    { time: '10:01', systolic: 122, diastolic: 82 },
+    { time: '10:02', systolic: 119, diastolic: 78 }
+  ];
+
+  // Convert data to CSV format
+  const convertToCSV = (data, type) => {
+    if (type === 1) {
+      return "Time,Heart Rate (BPM)\n" + data.map(d => `${d.time},${d.value}`).join("\n");
+    } else if (type === 2) {
+      return "Time,Systolic,Diastolic\n" + data.map(d => `${d.time},${d.systolic},${d.diastolic}`).join("\n");
+    } else {
+      const combined = "Time,Heart Rate (BPM),Systolic,Diastolic\n" +
+        data.map((_, i) =>
+          `${heartRateData[i]?.time || ''},${heartRateData[i]?.value || ''},${bpData[i]?.systolic || ''},${bpData[i]?.diastolic || ''}`
+        ).join("\n");
+      return combined;
+    }
+  };
+
+  const handleDownload = () => {
+    const now = new Date();
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+    const year = now.getFullYear();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    let csv = convertToCSV(graphOption === 1 ? heartRateData : graphOption === 2 ? bpData : [], graphOption);
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    const timestamp = `${day}-${month}-${year}_${hours}-${minutes}-${seconds}`;
+    link.download = `MonitoringData_${timestamp}.csv`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const iconStyleWhite = {
     color: '#ffffff',
     backgroundColor: '#1E3E6D',
@@ -43,7 +93,6 @@ const Monitoring = () => {
     cursor: 'pointer',
     transition: 'all 0.3s ease',
   };
-
   return (
     <div className="container-fluid rounded-4 mainmonitoring">
       <div className="text-white text-center py-3 pt-4 rounded titlebar">
@@ -76,9 +125,10 @@ const Monitoring = () => {
               style={{ backgroundColor: '#10b1a7', color: 'white', border: '2px solid white', width: '120px' }}>Stop</button>
 
             <div className="d-flex align-items-center gap-2 blClass">
-              <FaBluetooth />
+              <FaBluetooth size={24} className={isMonitoring ? "blinking-bluetooth" : ""} style={{ color: isMonitoring ? undefined : " #1E3E6D" }} />
               <span>Bluetooth Connected</span>
             </div>
+
 
            <button
             className="btn Monitorbutton2 ms-auto"
@@ -89,14 +139,14 @@ const Monitoring = () => {
             </button>
 
             <DropdownButton id="dropdown-basic-button" className="dropbutton custom-dropdown"
-              title="Monitoring Option" variant="bg-outline-light"
-              style={{ width: '180px', height: '48px', fontSize: '1.1rem', padding: '5px 3px' }}>
+              title="   Vital Metrics  " variant="bg-outline-light"
+              style={{ width: '180px', height: '48px', fontSize: '1.1rem', padding: '5px 3px', marginLeft:'6px', marginRight:'0px'}}>
               <Dropdown.Item onClick={() => setGraphOption(1)}>Heart Rate</Dropdown.Item>
               <Dropdown.Item onClick={() => setGraphOption(2)}>Blood Pressure</Dropdown.Item>
               <Dropdown.Item onClick={() => setGraphOption(3)}>All</Dropdown.Item>
             </DropdownButton>
      
-            <FaDownload size={24} className="download" />
+            <FaDownload size={28} className="download" onClick={handleDownload} style={{ cursor: 'pointer',marginRight:'30px' }} />
           </div>
 
           {showGraph && (
@@ -111,7 +161,7 @@ const Monitoring = () => {
                   <div style={{ width: "20%" }} className="shadow rounded p-3 d-flex align-items-center gap-3 graphonetext">
                     <FaHeart className="text-danger" size={70} />
                     <div>
-                      <p className="mb-1" style={{ color: "#1E3E6D" }}>Heartt Rate</p>
+                      <p className="mb-1" style={{ color: "#1E3E6D" }}>Heart Rate</p>
                       <h5 className="m-0" style={{ color: "#1E3E6D" }}>70 BPM</h5>
                     </div>
                   </div>
