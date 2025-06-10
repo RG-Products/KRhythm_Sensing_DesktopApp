@@ -13,5 +13,3 @@ ReactDOM.createRoot(document.getElementById('app') as HTMLElement).render(
     </WindowContextProvider>
   </React.StrictMode>
 )
-// "tailwind-merge": "^3.3.0",
-    // "tw-animate-css": "^1.3.2"

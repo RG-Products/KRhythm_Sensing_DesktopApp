@@ -50,6 +50,7 @@ const Heartbeat = ({ reset }) => {
 
         <ResponsiveContainer width="100%" height={327}>
           <LineChart data={data} margin={{ top: 20, right: 30, bottom: 40, left: 40 }}>
+            {/* It is used  customise graph line  */}
             <CartesianGrid stroke="#dee2e6" strokeDasharray="3 3" />
             <XAxis dataKey="time" tick={{ fill: '#495057', fontSize: 11 }}>
               <Label value="Time (s)" offset={-10} position="insideBottom"
