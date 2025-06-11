@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './Signin.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../Assets/logo.png';
 import { useNavigate, Link } from 'react-router-dom';
 import BackButton from '../BackButtonUI/BackButton';

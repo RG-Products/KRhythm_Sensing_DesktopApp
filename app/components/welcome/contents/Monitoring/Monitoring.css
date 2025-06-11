@@ -101,7 +101,7 @@
 
 .invisible-scrollbar::-webkit-scrollbar {
   width: 0;
-  background: transparent; /* Chrome, Safari */
+  background: transparent; 
 }
 @keyframes blink-blue-green {
   0%   { color: #0ee720; } /* blue */
@@ -113,7 +113,7 @@
   animation: blink-blue-green 1s infinite;
 }
 .custom-dropdown-item {
-  padding: 12px 20px; /* Adjust as needed */
+  padding: 12px 20px;
   font-size: 1rem;
 }
 @keyframes heartbeat {

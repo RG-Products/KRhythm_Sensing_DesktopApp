@@ -108,3 +108,10 @@ Dependencies:
 + react-router-dom 7.6.2
 + recharts 2.15.3
 
+
+### v2.0.0
+
+        Add guest mode
+        Blinking Bluetooth color change
+        password eye icon
+        logout button

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Dropdown, DropdownButton } from "react-bootstrap";
 import { FaBluetooth, FaHome, FaUserInjured, FaCog, FaQuestionCircle, FaDownload, FaHeart } from "react-icons/fa";
 import Heartbeat from "./Heartbeat";

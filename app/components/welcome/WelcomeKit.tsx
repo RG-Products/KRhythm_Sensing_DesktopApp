@@ -6,9 +6,9 @@ import './styles.css';
 // Lazy load all route components
 // This setup only loads the specific page when the user navigates to that route — reducing initial load time and memory.
 const Hero_Page = lazy(() => import('./contents/Hero_Page/Hero_Page'));
-const Signup = lazy(() => import('./contents/Signup/Signup'));
+const Signup = lazy(() => import('./contents/SignUp/Signup'));
 const Signin = lazy(() => import('./contents/Signin/Signin'));
-const ForgetPassword = lazy(() => import('./contents/ForgetPassword/ForgetPassword'));
+const ForgetPassword = lazy(() => import('./contents/Forgetpassword/ForgetPassword'));
 const ScanandConnect = lazy(() => import('./contents/ScanandConnect/ScanandConnect'));
 const BLEDevices = lazy(() => import('./contents/BleDevice/BleDevice'));
 const Available = lazy(() => import('./contents/Available/Available'));

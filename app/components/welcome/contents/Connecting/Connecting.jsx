@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './Connecting.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../Assets/logo.png';
 import centrelogo from '../Assets/bluetooth.png';
 import { useNavigate } from 'react-router-dom';

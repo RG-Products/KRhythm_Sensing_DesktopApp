@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import './ForgetPassword.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../Assets/logo.png'; 
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../BackButtonUI/BackButton';

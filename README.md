@@ -34,8 +34,6 @@ This application is commonly used in clinical or research environments to visual
 - 📦 JavaScript - Window-level logic
 - 🎨 Bootstrap - Styling framework
 - ⚡ Vite - Lightning-fast bundler
-- 🪟 Custom Window & Titlebar
-- 🛠️ Electron Builder - Packaging apps for distribution
 
 ---
 

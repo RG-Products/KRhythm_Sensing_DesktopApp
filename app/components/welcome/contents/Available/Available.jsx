@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import './Available.css'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FaBluetoothB } from 'react-icons/fa';
 import logo from '../Assets/logo.png';
 import centrelogo from '../Assets/bluetooth.png';
 import spinning from '../Assets/spining.png';
 import bluetoothicon from '../Assets/Blicon.png'
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../BackButtonUI/BackButton';
-import { MdOutlineBluetoothSearching } from "react-icons/md";
+
 function Available() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
