@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip, Label
 } from 'recharts';
-import './HBBloodpresure.css';
+import "./graph.css";
 const generateBPPoint = (index) => {
   const phase = index % 60;
   if (phase === 0) return 120;
@@ -21,7 +21,7 @@ const HBBloodPressure = () => {
           time: prev.length,
           value: generateBPPoint(prev.length),
         }];
-        return next.slice(-100);
+        return next.slice(-300);
       });
     }, 2500);
 
@@ -29,9 +29,9 @@ const HBBloodPressure = () => {
   }, []);
 
   return (
-    <div className="bloodpressure">
+    <div className="graph-container mt-0 " >
       <div
-        className="card shadow rounded "
+        className="card shadow rounded p-3"
         style={{ background: 'radial-gradient(circle, rgb(230, 250, 252), rgb(211, 250, 253), #c7f6fa, #B6F2F6)' }}
       >
         <h5 className="text-center mb-3" style={{ color: '#1E3E6D', fontWeight: 'bolder', fontSize: '28px' }}>
@@ -45,16 +45,18 @@ const HBBloodPressure = () => {
               <Label
                 value="Voltage (mV)"
                 angle={-90}
+                offset={-15}
+                dy={70}
                 position="insideLeft"
-                style={{ fill: '#1E3E6D', fontWeight: 'bold' }}
+                style={{ fill: '#1E3E6D', fontWeight: 'bold' , fontSize: "30px" }}
               />
             </YAxis>
             <XAxis dataKey="time" tick={{ fill: '#495057', fontSize: 11 }}>
               <Label
                 value="Time (s)"
-                offset={-10}
+                offset={-24}
                 position="insideBottom"
-                style={{ fill: '#1E3E6D', fontWeight: 'bold' }}
+                style={{ fill: '#1E3E6D', fontWeight: 'bold' , fontSize: "30px"}}
               />
             </XAxis>
             <Tooltip contentStyle={{ backgroundColor: '#ffffff', borderColor: '#ced4da' }} />

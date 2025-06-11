@@ -64,7 +64,7 @@
 
 .window-content {
   flex: 1;
-  overflow-y: auto;
+  overflow-y: hidden;
   overflow-x: hidden;
   position: relative;
   
@@ -207,6 +207,7 @@
 /* Custom scrollbar for window content */
 .window-content::-webkit-scrollbar {
   width: var(--window-scrollbar-width);
+
 }
 
 .window-content::-webkit-scrollbar-track {

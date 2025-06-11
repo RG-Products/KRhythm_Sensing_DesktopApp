@@ -9,7 +9,11 @@ import { FaHeartPulse } from "react-icons/fa6";
 import HeartbeatBP from "./HBBloodPressure";
 import { useNavigate } from 'react-router-dom';
 import { RiLogoutCircleLine } from "react-icons/ri";
+import { FaHeartbeat } from "react-icons/fa";
+import { GoHeartFill } from "react-icons/go";
 
+import Heartbeat1 from "./HR2";
+import HeartbeatBP2 from "./HP2";
 const Monitoring = () => {
   const [graphOption, setGraphOption] = useState(1);
   const [showGraph, setShowGraph] = useState(false);
@@ -117,7 +121,7 @@ const handleStop = () => {
           </div>
         </div>
 
-        <div className="col-md-10 p-4 maintitle">
+        <div className="container-fluid col-md-10 p-1  maintitle">
           <div className="d-flex align-items-center gap-3 mb-4 flex-nowrap">
             <button className="btn Monitorbutton ms-auto" onClick={handleStart}
               style={{ backgroundColor: '#10b1a7', color: 'white', border: '2px solid white', width: '120px' }}>Start</button>
@@ -160,7 +164,7 @@ const handleStop = () => {
                     </div>
                   </div>
                   <div style={{ width: "20%" }} className="shadow rounded p-3 d-flex align-items-center gap-3 graphonetext">
-                    <FaHeart className="text-danger heartbeat-icon" size={70} />
+                    <GoHeartFill className="text-danger heartbeat-icon" size={70} />
                     <div>
                       <p className="mb-1" style={{ color: "#1E3E6D" }}>Heart Rate</p>
                       <h5 className="m-0" style={{ color: "#1E3E6D" }}>70 BPM</h5>
@@ -177,7 +181,7 @@ const handleStop = () => {
                     </div>
                   </div>
                   <div style={{ width: "20%" }} className="bg-white shadow rounded p-3 d-flex align-items-center gap-3 graphonetext">
-                  <FaHeartPulse className="text-danger heartbeat-icon" size={70} />
+                  <FaHeartbeat className="text-danger heartbeat-icon" size={70} />
                   <div>
                     <p className="mb-1 bp-label" style={{ color: "#1E3E6D" }}>BLOOD PRESSURE</p>
                     <h5 className="m-0 bp-value" style={{ color: "#1E3E6D" }}>120 / 80</h5>
@@ -190,23 +194,23 @@ const handleStop = () => {
               <div className="d-flex flex-column gap-3">
                 {[1, 2].map((_, index) => (
                   <div key={index} className="d-flex flex-row graphonethree" style={{ flex: 1 }}>
-                  <div className="w-100 h-100 d-flex align-items-center justify-content-center">
+                  <div className="w-100 h-100 d-flex align-items-center justify-content-center" style={{marginLeft:"-220px"}}>
                     <div style={{ transform: 'scale(0.5)', minWidth:"700px",transformOrigin: 'center' }}>
                       {index === 0 ? (
-                        <Heartbeat />
+                        <Heartbeat1 />
                       ) : (
-                        <HeartbeatBP />
+                        <HeartbeatBP2 />
                       )}
                     </div>
                   </div>
             <div
-          style={{ width: "20%", minWidth: "180px" }}
+          style={{ width: "20%", minWidth: "180px",  marginLeft:"-100px" }}
           className="bg-white shadow rounded p-3 d-flex align-items-center gap-3 graphonetext"
          >
           {index === 0 ? (
-            <FaHeart className="text-danger heartbeat-icon" size={60} />
+            <GoHeartFill className="text-danger heartbeat-icon" size={60} />
           ) : (
-            <FaHeartPulse className="text-danger heartbeat-icon" size={60} />
+            <FaHeartbeat className="text-danger heartbeat-icon" size={60} />
           )}
           <div>
             <p className="mb-1" style={{ color: "#1E3E6D" }}>

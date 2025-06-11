@@ -30,6 +30,7 @@ export default function WelcomeKit() {
             <Route path="/available" element={<Available />} />
             <Route path="/connecting" element={<Connecting />} />
             <Route path="/monitoring" element={<Monitoring />} />
+            
           </Routes>
         </Suspense>
       </Router>

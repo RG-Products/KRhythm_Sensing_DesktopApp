@@ -1,0 +1,14 @@
+@media  (min-width: 1200px) and (max-width: 1300px)  {
+  .graph-container {
+    max-width: 1500px;
+    min-width: 1100px;
+
+  }
+}
+
+@media (max-width: 1300px)  {
+  .graph-container {
+    max-width: 1500px;
+    min-width: 10px;
+  }
+}
