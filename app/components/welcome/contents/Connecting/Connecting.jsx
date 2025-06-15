@@ -1,18 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import './Connecting.css';
 import logo from '../Assets/logo.png';
 import centrelogo from '../Assets/bluetooth.png';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import BackButton from '../BackButtonUI/BackButton';
+
+
 
 function PairingPage() {
   const [allowAccess, setAllowAccess] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const [pairingCode, setPairingCode] = useState('');
 
+  // Get device name passed from Available page
+  const deviceName = location.state?.deviceName || 'Unknown Device';
+  const name = localStorage.getItem('name');
   const handlePair = () => {
-    setShowSuccessModal(true); // Trigger modal
+    if (allowAccess) {
+      setShowSuccessModal(true);
+    } else {
+      alert('Please allow access to your contacts and call history to continue pairing.');
+    }
   };
+  useEffect(() => {
+  const code = Math.floor(100000 + Math.random() * 900000).toString(); // random 6-digit code
+  setPairingCode(code);
+}, []);
 
   const proceedToMonitoring = () => {
     setShowSuccessModal(false);
@@ -32,18 +47,19 @@ function PairingPage() {
 
         <div className="mb-2 mt-3">
           <strong style={{ color: '#1c4070' }}>Device Name</strong>
-          <span className="ms-5 text-muted">Rajagopal</span>
+          <span className="ms-5 " style={{color:"#1c4070" , fontSize: '15px', fontStyle: 'italic', fontWeight: 'bold' }}> {name ? name : 'Guest'}</span>
         </div>
 
         <div className="mb-3 mt-3">
-          <strong style={{ color: '#1c4070' }}>Available Devices</strong>
+          <strong style={{ color: '#1c4070' }}>Selected Device</strong>
+          <span className="ms-3" style={{color:"#1c4070" , fontSize: '15px', fontStyle: 'italic', fontWeight: 'bold' }}>{deviceName}</span>
         </div>
 
         <div className="pairing-box p-3 rounded mt-4">
-          <div className="fw-bold mb-2">Pair with BLE Device 1?</div>
+          <div className="fw-bold mb-2">Pair with {deviceName}?</div>
           <div className="mb-3">
             <div>Bluetooth pairing code</div>
-            <div className="fw-bold fs-5">123456</div>
+            <div className="fw-bold fs-5">{pairingCode}</div>
           </div>
 
           <div className="form-check mb-3">
@@ -63,7 +79,7 @@ function PairingPage() {
             <button
               className="btn"
               style={{ color: 'var(--primary-color)', fontWeight: '900' }}
-              onClick={() => navigate('/')}
+              onClick={() => navigate('/scan')}
             >
               Cancel
             </button>
@@ -78,7 +94,6 @@ function PairingPage() {
         </div>
       </div>
 
-      {/* Modal */}
       {showSuccessModal && (
         <div
           className="modal fade show"
@@ -98,7 +113,7 @@ function PairingPage() {
                 ></button>
               </div>
               <div className="modal-body">
-                <p>Would you like to proceed to the monitoring screen?</p>
+                <p>Would you like to proceed to monitoring?</p>
               </div>
               <div className="modal-footer">
                 <button

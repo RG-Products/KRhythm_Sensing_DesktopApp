@@ -18,15 +18,16 @@
 .titlebar{
     /* background-color: #B6F2F6; */
     position: relative;
-    top: 30px;
-    max-height: 80px;
+    top: 18px;
+    left: 0px;
+    max-height: 100px;
     background: radial-gradient(circle, rgb(230, 250, 252), rgb(211, 250, 253), #c7f6fa, #B6F2F6);
 
 }
 .sidebar{
     background-color: #B6F2F6;
-    margin-top: 18px;
-    margin-left: -4px;
+    margin-top: -18px;
+    margin-left: -8px;
     border-radius: 10px;
     background: radial-gradient(circle, rgb(230, 250, 252), rgb(211, 250, 253), #c7f6fa, #B6F2F6);
 }
@@ -43,13 +44,12 @@
     /* max-height: 300px; */
 }
 .maintitle{
-     background: radial-gradient(circle, rgb(230, 250, 252), rgb(211, 250, 253), #c7f6fa, #B6F2F6);
-  /* background: linear-gradient(to bottom, #B6F2F6, #c7f6fa,rgb(211, 250, 253),rgb(230, 250, 252)); */
-  margin-top: 18px;
+  background: radial-gradient(circle, rgb(230, 250, 252), rgb(211, 250, 253), #c7f6fa, #B6F2F6);
+  margin-top: -18px;
   margin-left: 15px;
   border-radius: 10px;
   max-height: 600px;
-  height: 520px;
+  height: 530px;
   margin-right: 10px;
   flex: 1; /* Makes it shrink within row */
   /* background: 'linear-gradient(to right, #B6F2F6,rgb(210, 244, 247), #ffffff)'; */
@@ -58,6 +58,7 @@
     background-color: #10b1a7;
     color: 'white';
     border :'3px solid white';
+    margin-right: 20px;
 }
 .Monitorbutton2{
     margin-left: 60px;
@@ -70,6 +71,7 @@
 }
 .blClass{
     margin-left: 30px;
+    /* margin-right: -10px; */
     font-size: large;
     font-weight: bolder;
     color:#1E3E6D ;
@@ -82,17 +84,64 @@
     max-height: 600px;
     height: 500px;
     min-height: 400px;
-    margin-top: -15px;
+    position: relative;
+    top: 10px;
+}
+.graphtwo{
+    max-height: 600px;
+    height: 500px;
+    min-height: 400px;
     
 }
-.graphonetext{
-    background: radial-gradient(circle, rgb(230, 250, 252), rgb(211, 250, 253), #c7f6fa, #B6F2F6);
+.graphonetext-large {
+  background: radial-gradient(circle, rgb(230, 250, 252), rgb(211, 250, 253), #c7f6fa, #B6F2F6);
+  position: relative;
+  right: 10px;
+  min-height: 100px;
+  height: 360px; 
+
+  max-height: 430px;
+  top: 37px;
+}
+
+.graphonetext-small {
+  background: radial-gradient(circle, rgb(230, 250, 252), rgb(211, 250, 253), #c7f6fa, #B6F2F6);
+  min-height: 100px;
+  height: auto;
+  max-height: 150px;  /* Adjust to fit under title */
+  position: relative;
+  right: 15px;
+  top: 68px;
 
 }
+.customizegraph{
+  position: relative;
+  top: 50px;
+  width: 400px;
+  max-width: 700px;
+}
+.vital-metrics-container .form-check-input {
+  cursor: pointer;
+  border-color: #1E3E6D;
+}
+
+.vital-metrics-container .form-check-input:checked {
+  background-color: #1E3E6D;
+  border-color: #1E3E6D;
+}
+
+.vital-metrics-container .form-check-label {
+  color: #1E3E6D;
+  font-weight: 500;
+  margin-left: 4px;
+}
+
 .graphonethree{
     max-height: 200px;
     height: 200px;
     min-height: 200px;
+    margin-top: -9px;
+    
 }
 .invisible-scrollbar {
   scrollbar-width: none; /* Firefox */
@@ -137,9 +186,6 @@
   }
 }
 
-.heartbeat-icon {
-
-}
 .bp-card {
   width: 250px;
   background-color: white;

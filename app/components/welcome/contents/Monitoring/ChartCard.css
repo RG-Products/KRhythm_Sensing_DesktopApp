@@ -1,0 +1,20 @@
+.chart-card {
+  background: radial-gradient(
+    circle,
+    rgb(230, 250, 252),
+    rgb(211, 250, 253),
+    #c7f6fa,
+    #B6F2F6
+  );
+  color: #333;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+.chart-title {
+  color: #1E3E6D;
+  font-weight: bolder;
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 1rem;
+}

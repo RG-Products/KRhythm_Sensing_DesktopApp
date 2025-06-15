@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip, Label
 } from 'recharts';
+import './ChartCard.css';
 
 const generateECGPoint = (index) => {
   const phase = index % 50;
@@ -34,34 +35,47 @@ const Heartbeat = ({ reset }) => {
 
   useEffect(() => {
     if (reset) {
-      setData([]); // Clear the ECG data
+      setData([]);
     }
   }, [reset]);
 
   return (
-    <div className="container mt-0">
-      <div className="card shadow rounded p-3" style={{
-        background: 'radial-gradient(circle, rgb(230, 250, 252), rgb(211, 250, 253), #c7f6fa, #B6F2F6)',
-        color: '#333'
-      }}>
-        <h5 className="text-center mb-3" style={{ color: '#1E3E6D', fontWeight: 'bolder', fontSize: '30px' }}>
-          Heart Rate
-        </h5>
+    <div className="container mt-0" style={{ height: '100%', width: '100%' }}>
+      <div className="chart-card" style={{ height: '100%' }}>
+        {/* Optional: remove title inside chart to save space */}
+        {/* <h5 className="chart-title" style={{ fontSize: '24px', margin: 0 }}>
+          Blood Pressure
+        </h5> */}
 
-        <ResponsiveContainer width="100%" height={327}>
-          <LineChart data={data} margin={{ top: 20, right: 30, bottom: 40, left: 40 }}>
-            {/* It is used  customise graph line  */}
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={data} margin={{ top: 5, right: 10, bottom: 5, left: 10 }}>
             <CartesianGrid stroke="#dee2e6" strokeDasharray="3 3" />
-            <XAxis dataKey="time" tick={{ fill: '#495057', fontSize: 11 }}>
-              <Label value="Time (s)" offset={-10} position="insideBottom"
-                     style={{ fill: '#1E3E6D', fontWeight: 'bold' }} />
+            <XAxis dataKey="time" tick={{ fill: '#495057', fontSize: 10 }}>
+              <Label
+                value="Time (s)"
+                offset={-5}
+                position="insideBottom"
+                style={{ fill: '#1E3E6D', fontWeight: 'bold' }}
+              />
             </XAxis>
-            <YAxis domain={[-100, 100]} tick={{ fill: '#495057', fontSize: 11 }}>
-              <Label value="Voltage (mV)" angle={-90} position="insideLeft"
-                     style={{ fill: '#1E3E6D', fontWeight: 'bold' }} />
+            <YAxis domain={[-100, 100]} tick={{ fill: '#495057', fontSize: 10 }}>
+              <Label
+                value="Voltage (mV)"
+                angle={-90}
+                position="insideLeft"
+                style={{ fill: '#1E3E6D', fontWeight: 'bold' }}
+                dy={40}
+              />
             </YAxis>
             <Tooltip contentStyle={{ backgroundColor: '#ffffff', borderColor: '#ced4da' }} />
-            <Line type="monotone" dataKey="value" stroke="#20c997" strokeWidth={2} dot={false} isAnimationActive={false} />
+            <Line
+              type="monotone"
+              dataKey="value"
+              stroke="#20c997"
+              strokeWidth={2}
+              dot={false}
+              isAnimationActive={false}
+            />
           </LineChart>
         </ResponsiveContainer>
       </div>

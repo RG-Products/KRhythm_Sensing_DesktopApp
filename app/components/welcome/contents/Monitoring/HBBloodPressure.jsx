@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip, Label
 } from 'recharts';
-import './HBBloodpresure.css';
+import './ChartCard.css';
+
 const generateBPPoint = (index) => {
   const phase = index % 60;
   if (phase === 0) return 120;
@@ -29,30 +30,26 @@ const HBBloodPressure = () => {
   }, []);
 
   return (
-    <div className="bloodpressure">
-      <div
-        className="card shadow rounded "
-        style={{ background: 'radial-gradient(circle, rgb(230, 250, 252), rgb(211, 250, 253), #c7f6fa, #B6F2F6)' }}
-      >
-        <h5 className="text-center mb-3" style={{ color: '#1E3E6D', fontWeight: 'bolder', fontSize: '28px' }}>
-          Blood Pressure
-        </h5>
+    <div className="container mt-0" style={{ height: "100%", width: "100%" }}>
+      <div className="chart-card" style={{ height: "100%" }}>
+        
 
-        <ResponsiveContainer width="100%" height={327}>
-          <LineChart data={data} margin={{ top: 20, right: 30, bottom: 40, left: 40 }}>
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={data} margin={{ top: 5, right: 10, bottom: 5, left: 10 }}>
             <CartesianGrid stroke="#dee2e6" strokeDasharray="3 3" />
-            <YAxis domain={[60, 130]} tick={{ fill: '#495057', fontSize: 11 }}>
+            <YAxis domain={[60, 130]} tick={{ fill: '#495057', fontSize: 10 }}>
               <Label
                 value="Voltage (mV)"
                 angle={-90}
                 position="insideLeft"
                 style={{ fill: '#1E3E6D', fontWeight: 'bold' }}
+                dy={40} // move the axis label downward (larger value = further down)
               />
             </YAxis>
-            <XAxis dataKey="time" tick={{ fill: '#495057', fontSize: 11 }}>
+            <XAxis dataKey="time" tick={{ fill: '#495057', fontSize: 10 }}>
               <Label
                 value="Time (s)"
-                offset={-10}
+                offset={-5}
                 position="insideBottom"
                 style={{ fill: '#1E3E6D', fontWeight: 'bold' }}
               />

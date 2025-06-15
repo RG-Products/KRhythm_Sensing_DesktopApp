@@ -109,9 +109,17 @@ Dependencies:
 + recharts 2.15.3
 
 
-### v2.0.0
+### v2.0.1
 
         Add guest mode
         Blinking Bluetooth color change
         password eye icon
         logout button
+
+### v2.0.2
+
+    fix color issue
+
+### v2.0.3
+    Name , Bluetooth Device , Pair number is dynamic
+    ECG Graph be dynamic

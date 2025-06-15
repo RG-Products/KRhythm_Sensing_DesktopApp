@@ -11,9 +11,8 @@ import { useNavigate } from 'react-router-dom';
 import { RiLogoutCircleLine } from "react-icons/ri";
 import { FaHeartbeat } from "react-icons/fa";
 import { GoHeartFill } from "react-icons/go";
+import { color } from "framer-motion";
 
-import Heartbeat1 from "./HR2";
-import HeartbeatBP2 from "./HP2";
 const Monitoring = () => {
   const [graphOption, setGraphOption] = useState(1);
   const [showGraph, setShowGraph] = useState(false);
@@ -35,9 +34,10 @@ const handleStop = () => {
   const handleReset = () => {
     setShowGraph(false);
     setResetSignal(true);
+    setIsMonitoring(true);
     setTimeout(() => {
-      setShowGraph(true);
-      setResetSignal(false);
+    setShowGraph(true);
+    setResetSignal(false);
     }, 100);
   };
 
@@ -68,6 +68,7 @@ const handleStop = () => {
       return combined;
     }
   };
+  const name = localStorage.getItem('name');
 
   const handleDownload = () => {
     const now = new Date();
@@ -98,141 +99,181 @@ const handleStop = () => {
     transition: 'all 0.3s ease',
   };
   return (
-    <div className="container-fluid rounded-4 mainmonitoring">
-      <div className="text-white text-center py-3 pt-4 rounded titlebar">
-        <img src={logo} alt="Logo" className="titlelogo" />
-      </div>
+  <div className="container-fluid rounded-4 mainmonitoring">
+    <div className="text-white text-center py-3 pt-4 rounded titlebar">
+      <img src={logo} alt="Logo" className="titlelogo" />
+    </div>
 
-      <div className="row no-gutters ml-20px" style={{ flexWrap: 'nowrap' }}>
-        <div className="col-md-2 d-flex flex-column align-items-center py-4 sidebar"
-          style={{ minHeight: '200px', maxHeight: '800px', boxShadow: '2px 0 5px rgba(0,0,0,0.1)' }}>
-
-          <div className="mb-4 text-center">
-            <FaUserCircle size={68} style={iconStyleWhite} />
-            <p className="mt-2 fw-semibold" style={{ color: '#1E3E6D' }}>Rajagopal</p>
-          </div>
-
-          <div className="d-flex flex-column align-items-center gap-4">
-            <FaHome size={40} style={iconStyleWhite} onClick={() => navigate('/')} />
-            <FaUserInjured size={40} style={iconStyleWhite} />
-            <FaCog size={40} style={iconStyleWhite} />
-            <FaQuestionCircle size={40} style={iconStyleWhite} />
-            <RiLogoutCircleLine size={40} style={iconStyleWhite} onClick={() => navigate('/')}/>
-          </div>
+    <div className="row no-gutters ml-20px" style={{ flexWrap: 'nowrap' }}>
+      <div className="col-md-2 d-flex flex-column align-items-center py-5 sidebar"
+        style={{ minHeight: '200px', maxHeight: '800px', boxShadow: '2px 0 5px rgba(0,0,0,0.1)' }}>
+        <div className="mb-4 text-center">
+          <FaUserCircle size={68} style={iconStyleWhite} />
+          <p className="mt-3 fw-semibold" style={{ color:'#1E3E6D' , fontSize: '15px', fontStyle: 'italic', fontWeight: 'bold' }}> {name ? name : 'Guest'}</p>
         </div>
 
-        <div className="container-fluid col-md-10 p-1  maintitle">
-          <div className="d-flex align-items-center gap-3 mb-4 flex-nowrap">
-            <button className="btn Monitorbutton ms-auto" onClick={handleStart}
-              style={{ backgroundColor: '#10b1a7', color: 'white', border: '2px solid white', width: '120px' }}>Start</button>
+        <div className="d-flex flex-column align-items-center gap-4">
+          <FaHome size={40} style={iconStyleWhite} onClick={() => navigate('/')} />
+          <FaUserInjured size={40} style={iconStyleWhite} />
+          <FaCog size={40} style={iconStyleWhite} />
+          <FaQuestionCircle size={40} style={iconStyleWhite} />
+          <RiLogoutCircleLine size={40} style={iconStyleWhite} onClick={() => {
+              localStorage.clear();   // or localStorage.removeItem('name');
+              navigate('/signin');
+            }}   />
+        </div>
+      </div>
 
-            <button className="btn Monitorbutton ms-auto" onClick={handleStop}
-              style={{ backgroundColor: '#10b1a7', color: 'white', border: '2px solid white', width: '120px' }}>Stop</button>
+      <div className="container-fluid col-md-10 p-1 maintitle">
+        <div className="d-flex align-items-center gap-3 mb-3 mt-3 flex-nowrap">
+          <button className="btn Monitorbutton ms-auto" onClick={handleStart}
+            style={{ backgroundColor: '#10b1a7', color: 'white', border: '2px solid white', width: '120px' }}>Start</button>
 
-            <div className="d-flex align-items-center gap-2 blClass">
-              <FaBluetooth size={24} className={isMonitoring ? "blinking-bluetooth" : ""} style={{ color: isMonitoring ? undefined : " #1E3E6D" }} />
-              <span>Bluetooth Connected</span>
-            </div>
+          <button className="btn Monitorbutton ms-auto" onClick={handleStop}
+            style={{ backgroundColor: '#10b1a7', color: 'white', border: '2px solid white', width: '120px' }}>Stop</button>
 
+          <div className="d-flex align-items-center gap-2 blClass">
+            <FaBluetooth size={24} className={isMonitoring ? "blinking-bluetooth" : ""} />
+            <span>Bluetooth Connected</span>
+          </div>
 
-           <button
+          <button
             className="btn Monitorbutton2 ms-auto"
             onClick={handleReset}
             style={{ backgroundColor: '#1E3E6D', color: 'white', border: '2px solid white', width: '120px' }}
-            >
+          >
             Reset
-            </button>
+          </button>
 
-            <DropdownButton id="dropdown-basic-button" className="dropbutton custom-dropdown"
-              title="   Vital Metrics  " variant="bg-outline-light"
-              style={{ width: '180px', height: '48px', fontSize: '1.1rem', padding: '5px 3px', marginLeft:'6px', marginRight:'0px'}}>
-              <Dropdown.Item onClick={() => setGraphOption(1)}>Heart Rate</Dropdown.Item>
-              <Dropdown.Item onClick={() => setGraphOption(2)}>Blood Pressure</Dropdown.Item>
-              <Dropdown.Item onClick={() => setGraphOption(3)}>All</Dropdown.Item>
-            </DropdownButton>
-     
-            <FaDownload size={28} className="download" onClick={handleDownload} style={{ cursor: 'pointer',marginRight:'30px' }} />
-          </div>
+          <Dropdown>
+            <Dropdown.Toggle  style={{color:'white' , backgroundColor:'#1E3E6D', border: '2px solid white'}} id="vital-metrics-dropdown">
+              Vital Metrics
+            </Dropdown.Toggle>
 
-          {showGraph && (
-            <div className="mb-4 d-flex flex-column" style={{ height: "400px", maxHeight: "500px" }}>
-              {(graphOption === 1) && (
-                <div className="d-flex flex-row mb-3 graphone" style={{ flex: 1 }}>
-                  <div className="flex-grow-1 rounded me-3 d-flex flex-column justify-content-center align-items-center" style={{ height: "100%" }}>
-                    <div className="w-100 h-100">
-                      <Heartbeat reset={resetSignal} />
-                    </div>
-                  </div>
-                  <div style={{ width: "20%" }} className="shadow rounded p-3 d-flex align-items-center gap-3 graphonetext">
-                    <GoHeartFill className="text-danger heartbeat-icon" size={70} />
-                    <div>
-                      <p className="mb-1" style={{ color: "#1E3E6D" }}>Heart Rate</p>
-                      <h5 className="m-0" style={{ color: "#1E3E6D" }}>70 BPM</h5>
-                    </div>
+            <Dropdown.Menu>
+              <div className="px-3 py-1">
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    id="graph1"
+                    checked={graphOption === 1 || graphOption === 3}
+                    onChange={() => {
+                      if (graphOption === 1) setGraphOption(0);
+                      else if (graphOption === 3) setGraphOption(2);
+                      else if (graphOption === 2) setGraphOption(3);
+                      else setGraphOption(1);
+                    }}
+                  />
+                  <label className="form-check-label ms-2" htmlFor="graph1">Heart Rate </label>
+                </div>
+
+                <div className="form-check mt-2">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    id="graph2"
+                    checked={graphOption === 2 || graphOption === 3}
+                    onChange={() => {
+                      if (graphOption === 2) setGraphOption(0);
+                      else if (graphOption === 3) setGraphOption(1);
+                      else if (graphOption === 1) setGraphOption(3);
+                      else setGraphOption(2);
+                    }}
+                  />
+                  <label className="form-check-label ms-2" htmlFor="graph2">Blood Pressure</label>
+                </div>
+              </div>
+            </Dropdown.Menu>
+          </Dropdown>
+
+          <FaDownload size={28} className="download" onClick={handleDownload} style={{ cursor: 'pointer', marginRight: '30px' }} />
+        </div>
+
+        {showGraph && (
+          <div className="mb-4 d-flex flex-column" style={{ height: "410px", maxHeight: "600px" }}>
+            {(graphOption === 1) && (
+              <div className="d-flex flex-row mb-3 graphone p-2" style={{ flex: 1 }}>
+                <div className="flex-grow-1 rounded me-3 d-flex flex-column justify-content-center align-items-center" style={{ height: "100%" }}>
+                  <h3 style={{ color: "#1E3E6D" }}>Heart Rate</h3>
+                  <div className="w-100 h-100">
+                    <Heartbeat reset={resetSignal} />
                   </div>
                 </div>
-              )}
-
-              {(graphOption === 2) && (
-                <div className="d-flex flex-row mb-3 graphonetwo" style={{ flex: 1 }}>
-                  <div className="flex-grow-1 rounded me-3 d-flex flex-column justify-content-center align-items-center" style={{ height: "100%" }}>
-                    <div className="w-100 h-100">
-                      <HeartbeatBP reset={resetSignal} />
-                    </div>
-                  </div>
-                  <div style={{ width: "20%" }} className="bg-white shadow rounded p-3 d-flex align-items-center gap-3 graphonetext">
-                  <FaHeartbeat className="text-danger heartbeat-icon" size={70} />
+                <div style={{ width: "22%" }} className="shadow rounded p-3 d-flex align-items-center gap-3 graphonetext-large">
+                  <GoHeartFill className="text-danger heartbeat-icon" size={70} />
                   <div>
-                    <p className="mb-1 bp-label" style={{ color: "#1E3E6D" }}>BLOOD PRESSURE</p>
-                    <h5 className="m-0 bp-value" style={{ color: "#1E3E6D" }}>120 / 80</h5>
-                  </div>
-                </div>
-                </div>
-              )}
-
-              {graphOption === 3 && (
-              <div className="d-flex flex-column gap-3">
-                {[1, 2].map((_, index) => (
-                  <div key={index} className="d-flex flex-row graphonethree" style={{ flex: 1 }}>
-                  <div className="w-100 h-100 d-flex align-items-center justify-content-center" style={{marginLeft:"-220px"}}>
-                    <div style={{ transform: 'scale(0.5)', minWidth:"700px",transformOrigin: 'center' }}>
-                      {index === 0 ? (
-                        <Heartbeat1 />
-                      ) : (
-                        <HeartbeatBP2 />
-                      )}
-                    </div>
-                  </div>
-            <div
-          style={{ width: "20%", minWidth: "180px",  marginLeft:"-100px" }}
-          className="bg-white shadow rounded p-3 d-flex align-items-center gap-3 graphonetext"
-         >
-          {index === 0 ? (
-            <GoHeartFill className="text-danger heartbeat-icon" size={60} />
-          ) : (
-            <FaHeartbeat className="text-danger heartbeat-icon" size={60} />
-          )}
-          <div>
-            <p className="mb-1" style={{ color: "#1E3E6D" }}>
-              {index === 0 ? "HEART RATE" : "BLOOD PRESSURE"}
-            </p>
-            <h5 className="m-0" style={{ color: "#1E3E6D" }}>
-              {index === 0 ? "70 BPM" : "120 / 80"}
-                      </h5>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-
-                      </div>
-                    )}
-
+                    <p className="mb-1" style={{ color: "#1E3E6D" }}>Heart Rate</p>
+                    <h5 className="m-0" style={{ color: "#1E3E6D" }}>70 BPM</h5>
                   </div>
                 </div>
               </div>
-            );
+            )}
+
+            {(graphOption === 2) && (
+              <div className="d-flex flex-row mb-3 graphonetwo" style={{ flex: 1 }}>
+                <div className="flex-grow-1 rounded me-3 d-flex flex-column justify-content-center align-items-center" style={{ height: "100%" }}>
+                  <h3 style={{ color: "#1E3E6D" }}>Blood Pressure</h3>
+                  <div className="w-100 h-100">
+                    <HeartbeatBP reset={resetSignal} />
+                  </div>
+                </div>
+                <div style={{ width: "20%" }} className="shadow rounded p-3 d-flex align-items-center gap-3 graphonetext-large">
+                  <FaHeartbeat className="text-danger heartbeat-icon" size={70} />
+                  <div>
+                    <p className="mb-1" style={{ color: "#1E3E6D" }}>BLOOD PRESSURE</p>
+                    <h5 className="m-0" style={{ color: "#1E3E6D" }}>120 / 80</h5>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {graphOption === 3 && (
+              <div className="d-flex flex-column gap-3">
+                {[1, 2].map((_, index) => (
+                  <div key={index} className="d-flex flex-row graphonethree" style={{ flex: 1 }}>
+                    <div className="flex-grow-1 rounded p-3 me-3 d-flex align-items-center justify-content-center" style={{ height: "200px" }}>
+                      <div className="w-100 h-100">
+                        {index === 0 ? (
+                          <>
+                            <h3 style={{ textAlign: 'center', color: "#1E3E6D" }}>Heart Rate</h3>
+                            <Heartbeat style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+                          </>
+                        ) : (
+                          <>
+                            <h3 style={{ textAlign: 'center', color: "#1E3E6D" }}>Blood Pressure</h3>
+                            <HeartbeatBP style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+                          </>
+                        )}
+                      </div>
+                    </div>
+
+                    <div style={{ width: "20%", minWidth: "180px" }} className="shadow rounded p-3 d-flex align-items-center gap-3 graphonetext-small">
+                      {index === 0 ? (
+                        <FaHeart className="text-danger" size={60} />
+                      ) : (
+                        <FaHeartPulse className="text-danger" size={60} />
+                      )}
+                      <div>
+                        <p className="mb-1" style={{ color: "#1E3E6D" }}>
+                          {index === 0 ? "HEART RATE" : "BLOOD PRESSURE"}
+                        </p>
+                        <h5 className="m-0" style={{ color: "#1E3E6D" }}>
+                          {index === 0 ? "70 BPM" : "120 / 80"}
+                        </h5>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+);
+
           }
 
 export default Monitoring;

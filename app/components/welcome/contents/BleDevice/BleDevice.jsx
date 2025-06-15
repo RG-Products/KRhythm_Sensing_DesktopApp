@@ -85,7 +85,7 @@ function BleDevicePage() {
               </div>
 
               <div className="modal-body">
-                <p>Would you like to begin the pairing process?</p>
+                <p>Begin pairing?</p>
               </div>
 
               <div className="modal-footer">
@@ -98,7 +98,8 @@ function BleDevicePage() {
                 </button>
                 <button
                   type="button"
-                  className="btn btn-primary"
+                  className="btn "
+                  style={{ backgroundColor: 'var(--primary-color)', color:"white"}}
                   onClick={proceedToAvailable}
                 >
                   Yes, Proceed

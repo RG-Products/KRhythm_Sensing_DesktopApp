@@ -64,7 +64,7 @@ function ScanandConnect() {
         >
           <div className="modal-dialog modal-dialog-centered" role="document">
             <div className="modal-content">
-              <div className="modal-header bg-info text-white">
+              <div className="modal-header  text-white" style={{backgroundColor:"#10b1a7"}}>
                 <h5 className="modal-title">Please Confirm</h5>
                 <button
                   type="button"
@@ -80,7 +80,7 @@ function ScanandConnect() {
                 <button className="btn btn-outline-secondary" onClick={handleCancel}>
                   Cancel
                 </button>
-                <button className="btn btn-primary" onClick={handleConfirm}>
+                <button className="btn" style={{backgroundColor:"#1E3E6D" , color:"white"}} onClick={handleConfirm}>
                   Yes, Continue
                 </button>
               </div>
